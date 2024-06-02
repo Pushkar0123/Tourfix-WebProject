@@ -1,0 +1,169 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust</title>
+</head> -->
+<% layout("/layouts/boilerplate") -%> <!-- From Show.ejs-->
+<body> <!--After creating boilerplate.ejs --> 
+    <!-- <h3>All Listings</h3> -->
+
+    <!-- for new and create Route -->
+    <!-- after making navbar.ejs -->
+    <!-- <form method="GET" action="/listings/new">
+    <button>Create New Listing</button>
+    <!-- </form> -->
+
+    <style>
+        /* add media query homeworks */
+        #filters {
+            display: flex; /* used to show the icon in single row*/
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter {
+            text-align: center;
+            margin-right: 2rem;
+            margin-top: 2rem;
+            opacity: 0.7; /* show lightest color when hover*/
+        }
+
+        .filter:hover{
+            opacity:1;
+            cursor: pointer;
+        }
+
+        .filter p{
+            font-size: 0.8rem;
+        }
+
+        .tax-info {
+            /* visibility: hidden; no show no page but occupy the space on page  */
+            display: none; /* no visibilty aur space on page*/
+        }
+
+        .tax-toggle {
+            border: 1px solid black;
+            border-radius: 1rem;
+            height: 3.25rem;
+            padding: 1rem;
+            margin-left: 2rem;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <div id="filters">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic Cities</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountains</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Camping</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Farms</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-brands fa-snowflake"></i></div>
+            <p>Artic</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-igloo"></i></div>
+            <p>Domes</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-ship"></i></div>
+            <p>Boats</p>
+        </div>
+<!-- using bootstrap for Switch functionality as toogle switch -->
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" 
+                type="checkbox" 
+                role="switch" 
+                id="flexSwitchCheckDefault">
+                <label class="form-check-label" 
+                for="flexSwitchCheckDefault">Display total after taxes</label>
+            </div>
+        </div>
+    </div>
+
+<!-- ------------------------------------------------------------------------------------ -->
+<!--ek ROW ma jitna bh COLUMNS has LARGE screen per 3 dikhe ga-->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3"> 
+    <% for (let listing of allListings) { %> <!--for loop jaisa jaisa run hoga card print hoga aur ek for loop ka mtlb ek card print hoga-->
+        
+        <!-- for working image as show.ejs we use anchor tag  -->
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card"> <!-- From Bootstraps-->
+            <img 
+            src="<%= listing.image.url %>" 
+            class="card-img-top" 
+            alt="listing_image" 
+            style="height: 20rem;"> <!--STYLE make image in equal size with width-->
+
+            <div class="card-img-overlay">
+                ABCDHSHSGGGDHSJII
+            </div> <!--image ka upar kuch likhwana ho toh bootstrap se liya-->
+            <div class="card-body">          
+                <p class="card-text">
+                    <b><%= listing.title %></b> <br>
+                    &#8377; <%= listing.price.toLocaleString("en-IN") %> /Night 
+                    <i class="tax-info"> &nbsp; &nbsp;+18% GST</i>
+            </p>
+            </div>
+        </div>
+        </a>
+        <% } %>
+</div>
+
+<!-- <ul>
+    <% for (let listing of allListings) { %>
+        <li><a href="/listings/<%= listing._id %>"> <%= listing.title %> </a></li>
+        <% } %>
+    </ul> -->
+</body>
+<!-- </html> -->
+
+<script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click", ()=>{
+        // console.log("clicked");
+        let taxInfo = document.getElementsByClassName("tax-info");
+        // console.log(taxInfo);
+        // for any changes in tax-info we have to make loop for it due to larger info
+        for(info of taxInfo) {
+            // info.style.display = "inline"; //this is only for one time toggling effect so we use if-else cond
+            if(info.style.display != "inline"){
+                info.style.display = "inline";
+            }else{
+                info.style.display = "none";
+            }
+        }
+    });
+</script>
+

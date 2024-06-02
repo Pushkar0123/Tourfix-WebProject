@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderLust</title>
+</head> -->
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <div class="row mt-3">
+    <div class="col-8 offset-2"> <!-- offset-z left se space daga-->
+        <!-- <br><br> -->
+        <h3><b>Create a New Listing</b></h3>
+    <form method="POST" action="/listings"  
+    class="needs-validation" 
+    novalidate
+    enctype="multipart/form-data"><!-- novalidate(Bootstrap--form--validation) default browser wali style setting ko
+        invalidate kar dega and class="needs-validation also from same bootstrap"
+    enctype is used to upload aur send image by changing urlencoded to multiple/form-data-->
+
+        <div class="mb-3"> <!--spacing add karna ka liya-> bootstrap styling mb-3 use kiya-->
+            <label for="title" class="form-label">Title</label> <!--form-label and form-control from bootstrap knowledge-->
+        <input name="listing[title]" 
+        placeholder="Add a catchy title" 
+        type="text" 
+        class="form-control"
+        required 
+        >
+            <div class="valid-feedback"> Title looks good!</div> <!--agar data sahi enter ho toh uske neche dikhya ga-->
+        </div>
+        <div class="mb-3">
+            <label for="description" 
+            class="form-label">Description</label>
+            <textarea
+            name="listing[description]" 
+            placeholder="enter description" 
+            class="form-control"
+            required
+            > 
+            </textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <!-- <div class="mb-3">
+            <label for="image" class="form-label">Image Linke</label>
+            <input name="listing[image]" 
+            placeholder="enter image URL/Link" 
+            type="text" 
+            class="form-control">
+        </div> -->
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload listing Image</label>
+            <input name="listing[image]" 
+            type="file" 
+            class="form-control"
+            required>
+        </div>
+
+        <div class="row">
+            <!-- <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]" 
+                placeholder="1200" 
+                type="number" 
+                class="form-control"
+                required>
+            </div> -->
+
+            <!-- Delete type and write invalid-feedback -->
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]" 
+                placeholder="1200" 
+                class="form-control"
+                required>
+                <div class="invalid-feedback">Please enter a valid Price</div>
+            </div>
+    
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input name="listing[country]" placeholder="India" type="text" class="form-control"
+                required>
+                <div class="invalid-feedback">Country name should be valid</div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" placeholder="Jaipur, Patna" type="text" class="form-control"
+            required>
+            <div class="invalid-feedback">Location should be valid</div>
+        </div>
+
+        <!-- <br><br> -->
+        <button class="btn btn-dark add-btn mt-3">Add</button>
+        <!-- <br><br> -->
+    </form>
+    </div>
+    </div>
+</body>
+<!-- </html> -->
+<!-- <script src="/js/script.js"></script> --> <!--dirctly isko hum boilerplate ma add kar lenga-->

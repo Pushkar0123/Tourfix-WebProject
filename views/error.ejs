@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate")  %>
+
+<!-- bootstrap(component--alert) -->
+<div class="row mt-3">
+    <div class="alert alert-danger col-6 offset=3" role="alert">
+        <!-- From bootstrap(component--alert) to make a symbol -->
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        
+        <p class="alert-heading"> <%= message %> <p>
+
+        <!-- <h4 class="alert-heading"> lessthan%= err.message %> </h4> -->
+        <!-- <p> lessthan%= err.stack %> </p>     see screenshot for what does it do -->
+    </div>
+</div>

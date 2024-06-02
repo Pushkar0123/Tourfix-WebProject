@@ -1,0 +1,25 @@
+<% if(success && success.length) { %><!--Sucess jo humne res.locals ka ander variable create
+kiya hai woh actually ek array hai aur woh array exsits karta hai per woh array khali hai isilye
+empty flash dikh rha hai ... aasa na ho iska liye hum variable ka length(>0) bhi check karenge -->
+    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= success %> <!--from app.js introducing flash local.success variable-->
+        <button 
+        type="button" 
+        class="btn-close" 
+        data-bs-dismiss="alert" 
+        aria-label="Close">
+        </button>
+    </div>
+<% } %>
+
+<% if(error && error.length) { %>
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= error %> 
+        <button 
+        type="button" 
+        class="btn-close" 
+        data-bs-dismiss="alert" 
+        aria-label="Close">
+        </button>
+    </div>
+<% } %>
